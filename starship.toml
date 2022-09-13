@@ -1,0 +1,68 @@
+# TODO: cleanup
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """\
+[╭─](bold #585858)\
+[](#087bcb)\
+[ ](bg:#087bcb fg:#0b9bfe)\
+[](fg:#087bcb bg:#0b9bfe)\
+[  ](bg:#0b9bfe)\
+[](bg:#004d83 fg:#0b9bfe)\
+$directory\
+[](fg:#004d83 bg:#0b9bfe)\
+$username\
+[ ](fg:#0b9bfe)\
+$fill \
+$cmd_duration\
+$time\
+$localip
+[│ ](bold #585858)
+[╰─ ](bold #585858)  \
+"""
+
+[fill]
+symbol = "-"
+style = "bold #585858"
+
+[localip]
+ssh_only = false
+format = """
+[](fg:red)\
+[$localipv4](fg:white bg:red)\
+[](fg:red) """
+disabled = false
+
+[time]
+disabled = false
+use_12hr=true
+time_format = "%I:%M %p" # Hour:Minute AM/PM Format
+format = '[](fg:#087bcb)[ $time](bg:#087bcb)[ ](fg:#087bcb)'
+
+[cmd_duration]
+min_time = 1000
+style = "bg:light blue"
+show_milliseconds = false
+show_notifications=true
+format = "[[[](fg:#087bcb) $duration](fg:black bg:#087bcb) ](fg:#087bcb)"
+
+
+[username]
+show_always = true
+style_user = "bg:#0b9bfe"
+style_root = "bg:#0b9bfe"
+format = '[   $user ]($style)'
+
+[directory]
+truncation_symbol = "/"
+truncation_length = 0
+format = "[ ﱮ  ](bg:#004d83)[$path ](bg:#004d83)"
+repo_root_format = "[$before_root_path]($style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+disabled = false
+truncate_to_repo = false
+
+
+[directory.substitutions]
+"Documents" = "Documents  "
+"Downloads" = "Downloads  "
+"Music" = "Music  "
+"Pictures" = "Pictures "
